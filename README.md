@@ -1,5 +1,6 @@
 # Music Match
 Developer: Hannah Bales
+
 Project: A musician matching app that works similarly to Tinder with quick profile views, swiping right or left, and filtering options. Requires an API, which I have built using Go and Gin by creating routes, handlers and db access.
 
 Backend API for a Tinder-style musician matchmaking app
@@ -35,10 +36,10 @@ docker --version
 
 Run the database container:
 ```bash
-docker run --name bandmate-postgres \
+docker run --name musicmatch-postgres \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=yourpassword \
-  -e POSTGRES_DB=bandmate \
+  -e POSTGRES_DB=musicmatch \
   -p 5432:5432 \
   -d postgres
 ```
@@ -46,7 +47,7 @@ docker run --name bandmate-postgres \
 ### 3. Verify Database
 Enter Postgres shell:
 ```bash
-docker exec -it bandmate-postgres psql -U postgres
+docker exec -it musicmatch-postgres psql -U postgres
 ```
 List databases:
 ```bash
@@ -54,7 +55,7 @@ List databases:
 ```
 Connect:
 ```bash
-\c bandmate
+\c musicmatch
 ```
 
 ### 4. Create Users Table
@@ -73,7 +74,7 @@ CREATE TABLE users (
 ## Backend Setup
 ### 1. Initialize Go project
 ```bash
-go mod init bandmate-backend
+go mod init musicmatch-backend
 ```
 
 ### 2. Install dependencies
@@ -90,7 +91,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=yourpassword
-DB_NAME=bandmate
+DB_NAME=musicmatch
 ```
 
 ### 4. Run server
@@ -113,11 +114,11 @@ docker stop $(docker ps -q)
 ```
 Remove container
 ```bash
-docker rm bandmate-postgres
+docker rm musicmatch-postgres
 ```
 View logs
 ```bash
-docker logs bandmate-postgres
+docker logs musicmatch-postgres
 ```
 
 ## Notes

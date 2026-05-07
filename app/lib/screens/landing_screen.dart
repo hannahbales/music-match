@@ -29,14 +29,6 @@ class LandingScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 12),
-
-              // const Text(
-              //   "Find your next bandmate.",
-              //   style: TextStyle(
-              //     fontSize: 18,
-              //   ),
-              // ),
-
               const SizedBox(height: 48),
 
               SizedBox(

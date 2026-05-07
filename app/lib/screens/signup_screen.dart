@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'main_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -73,8 +74,12 @@ class _SignupScreenState extends State<SignupScreen> {
     setState(() => isLoading = false);
 
     if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Account created!")),
+      Navigator.pushReplacement(
+        context,
+
+        MaterialPageRoute(
+          builder: (_) => const MainScreen(),
+        ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/signup_screen.dart';
-import 'screens/login_screen.dart';
+import 'screens/landing_screen.dart';
 
 void main() {
   runApp(const MusicMatchApp());
@@ -12,9 +11,9 @@ class MusicMatchApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MusicMatch',
+      title: 'Music Match',
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const LandingScreen(),
     );
   }
 }

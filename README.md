@@ -3,22 +3,15 @@ Developer: Hannah Bales
 
 Project: A musician matching app that works similarly to Tinder with quick profile views, swiping right or left, and filtering options. Requires an API, which I have built using Go and Gin by creating routes, handlers and db access.
 
-Backend API for a Tinder-style musician matchmaking app
+## Backend Stack:
 
 Built with:
 - Go (Gin)
-- PostgreSQL (Docker)
-- Docker
+- PostgreSQL - db
+- Docker - container
 
----
-
-## Tech Stack
-
-- Backend: Go (Gin framework)
-- Database: PostgreSQL
-- Containerization: Docker
-
----
+## Frontend Stack:
+- Flutter (Dart)
 
 ## Local Setup
 
@@ -44,18 +37,10 @@ docker run --name musicmatch-postgres \
   -d postgres
 ```
 
-### 3. Verify Database
-Enter Postgres shell:
+### 3. Connect to Database
+
 ```bash
-docker exec -it musicmatch-postgres psql -U postgres
-```
-List databases:
-```bash
-\l
-```
-Connect:
-```bash
-\c musicmatch
+docker exec -it musicmatch-postgres psql -U postgres -d musicmatch
 ```
 
 ### 4. Create Users Table
@@ -102,9 +87,23 @@ Server runs on:
 ```bash
 http://localhost:8080
 ```
-Test endpoint:
+## Frontend Setup
+
+### Create Flutter App
 ```bash
-GET /ping
+flutter create app
+```
+Enable web-support (If no XCode)
+```bash
+flutter config --enable-web
+```
+Run frontend
+```bash
+flutter run -d web-server
+```
+### Install HTTP Package
+```bash
+flutter pub add http
 ```
 
 ## Useful Commands
@@ -121,7 +120,20 @@ View logs
 docker logs musicmatch-postgres
 ```
 
+## Status
+- Backend initialized (Go + Gin)
+- Database running (Postgres in Docker)
+- Frontend initialized (Flutter Web)
+- Signup API implemented
+- Frontend UI in progress
+- Auth flow next
+
+
 ## Notes
 - Make sure Docker is running before starting backend
 - PostgreSQL must be running on port 5432
 - Keep .env out of version control
+- Frontend is platform-agnostic (web-first for now)
+- Backend is independent and runs locally
+- Database runs in Docker container
+- All services communicate via HTTP

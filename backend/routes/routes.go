@@ -7,5 +7,5 @@ import (
 )
 
 func RegisterRoutes(r *gin.Engine) {
-	r.GET("/ping", handlers.Ping)
+	r.POST("/signup", handlers.Signup)
 }

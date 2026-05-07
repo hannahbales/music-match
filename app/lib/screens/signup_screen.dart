@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -54,6 +56,30 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> signup() async {
-    // we’ll build this next
+    setState(() => isLoading = true);
+
+    final url = Uri.parse("http://localhost:8080/signup");
+
+    final response = await http.post(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "name": nameController.text,
+        "email": emailController.text,
+        "password": passwordController.text,
+      }),
+    );
+
+    setState(() => isLoading = false);
+
+    if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Account created!")),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Signup failed")),
+      );
+    }
   }
 }
